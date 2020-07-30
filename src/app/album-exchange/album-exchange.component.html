@@ -1,0 +1,74 @@
+<div class="albex">
+
+  <h1 *ngIf="header === 'week'">Week {{ week }} Reviews</h1>
+  <h1 *ngIf="header === 'rec'"> {{ rec }} - Scores Received</h1>
+  <h1 *ngIf="header === 'rev'"> {{ rev }} - Scores Given</h1>
+
+  <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+    [legend]="barChartLegend" [chartType]="barChartType" role="graphics-document">
+  </canvas>
+
+  <div class="albex__data__selectors">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle aria-label="Sort Data By Week">Sort By Week</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" (click)="handleSelectorWeek($event)">
+        <div class="dropdownItem">1</div>
+        <div class="dropdownItem">2</div>
+        <div class="dropdownItem">3</div>
+        <div class="dropdownItem">4</div>
+        <div class="dropdownItem">5</div>
+        <div class="dropdownItem">6</div>
+        <div class="dropdownItem">7</div>
+        <div class="dropdownItem">8</div>
+        <div class="dropdownItem">9</div>
+        <div class="dropdownItem">10</div>
+        <div class="dropdownItem">11</div>
+        <div class="dropdownItem">12</div>
+        <div class="dropdownItem">13</div>
+        <div class="dropdownItem">14</div>
+        <!-- firestore collection w/ week # -->
+      </div>
+    </div>
+
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle aria-label="Sort Data By Reviwer">Sort By Reviewer</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <div *ngFor="let user of users | async" (click)="handleRevdBy($event)">
+          <div class="dropdownItem">{{ user.discord_name }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle aria-label="Sort Data By Recommender">Sort By Recommender</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <div *ngFor="let user of users | async" (click)="handleRecdBy($event)">
+          <div class="dropdownItem">{{ user.discord_name }}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="summary">There were {{ data_unreviewed.toString() }} albums unreviewed and {{ data_unscored.toString() }} albums reviewed
+  but not scored in this dataset.
+  The average score for the dataset was {{ data_avg.toString() }}.
+</div>
+
+
+<div class="albex__table" role="table">
+  <div class="div">Week</div>
+  <div class="div">Album </div>
+  <div class="div">Score</div>
+  <div class="div">Review</div>
+
+  <div *ngFor="let review of tableContent" class="albex__table__entry">
+    <div class="div1">{{ review.week }}</div>
+    <div class="div2">"{{ review.album_name }}" by {{ review.album_artist }}</div>
+    <div *ngIf="!review.score; else reviewScoreBlock" class="div3">Unscored</div>
+    <ng-template #reviewScoreBlock><div class="div3">{{ review.score }}</div></ng-template>
+    <div *ngIf="!review.review_text; else reviewTextBlock" class="div4">Unreviewed</div>
+    <ng-template #reviewTextBlock><div class="div4">{{ review.review_text }}</div></ng-template>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+@import "../../src/styles.scss";
+
+// backrgound for all pages
+body{
+    background: $body-red;
+    color: $white-text;
+    font-family: 'Hind', sans-serif;
+}
+
+// header TODO - make own component
+.header__bg{
+    display: flex;
+    background: black;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.header__logo{
+    padding: 1rem 0rem 1rem 4rem;
+}
+// header menu - separate flex container within
+.header__menu{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    grid-gap: 2rem;
+    padding-top: 2rem;
+    margin-right: 5rem;
+}
+
+// header mobile version init - hidden on max load, displays sub 800px width
+.header__mobile__menu{
+    display: none;
+}
+
+a{
+    color: $white-text;
+}
+a:hover{
+    text-decoration: none;
+}
+a:visited{
+    color: $white-text;
+}
+.btn{
+    background-color: $accent-orange;
+    color: white;
+    border-color: white;
+    height: 40px;
+    transition: all 0.2s ease-in-out;
+}
+i{
+    line-height: unset;
+}
+.btn:hover{
+    background-color: $accent-pink;
+    text-decoration: none;
+    color: white;
+    border-color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 0.2rem rgba(174, 111, 162, 0.5);
+}
+.btn-outline-primary:focus{
+    box-shadow: 0 0 0 0.2rem rgba(174, 111, 162, 0.5);
+}
+.show > .btn-outline-primary.dropdown-toggle{
+    background-color: $accent-pink;
+    text-decoration: none;
+    color: white;
+    border-color: white;
+}
+.show > .btn-outline-primary.dropdown-toggle:focus{
+    box-shadow: 0 0 0 0.2rem rgba(174, 111, 162, 0.5);
+}
+.dropdownItem{
+    text-align: center;
+    padding-top: 0.25rem;
+    opacity: 0.75;
+}
+.dropdownItem:hover{
+    background-color: rgba(174, 111, 162, 0.5);
+}
+.dropdown-menu{
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+// media queries
+@media (max-width: 1103px){
+    .header__menu{
+        margin-right: 3rem;
+    }
+}
+@media (max-width: 923px){
+    a{
+        color: unset;
+    }
+    a:visited{
+        color: unset;
+    }
+    a:hover{
+        background-color: rgba(174, 111, 162, 0.5);
+    }
+    .header__bg{
+        justify-content: space-evenly;
+    }
+    .header__logo{
+        padding: 1rem 0rem 1rem 0rem;
+    }
+    .header__menu{
+        display: none;
+    }
+    .header__mobile__menu{
+        display: block;
+        margin-bottom: 1rem;
+    }
+}

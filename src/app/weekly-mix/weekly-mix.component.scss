@@ -1,0 +1,55 @@
+@import "../../../src/styles.scss";
+
+a{
+    color: $white-text;
+}
+a:hover{
+    text-decoration: none;
+}
+a:visited{
+    color: $white-text;
+}
+
+.mix__chart{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 500px));
+    justify-content: center;
+    align-content: center;
+    margin: 2rem;
+    grid-gap: 3rem;
+}
+
+.mix__chart__image{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    transition: all 0.2s ease-in-out;
+}
+
+.mix__chart__image:hover{
+    box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.5);
+    transform: translateY(-3px);
+}
+
+.mix__chart__image > img{
+    height: 500px;
+    width: 500px;
+    opacity: 90%;
+}
+
+.mix__chart__textbox{
+    position: absolute;
+}
+
+@media (max-width: 1150px){
+    .mix__chart__image > img{
+        height: 300px;
+        width: 300px;   
+        margin: unset;
+    }
+    .mix__chart{
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}

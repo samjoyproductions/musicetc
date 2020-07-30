@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'music-etc';
+  description = 'music-etc';
+  mobileShow = 'hidden';
+
+  displayMobileMenu($event){
+    $event.target.nextElementSibling.classList.toggle("show")
+  }
 }

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "music-etc": {
+      "hosting": {
+        "music-etc": [
+          "music-etc"
+        ]
+      }
+    }
+  }
+}

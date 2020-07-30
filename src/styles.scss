@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+// variables
+$white-text: #f8f8ff;
+$body-red: #CB0C2E;
+$accent-pink: #C41574;
+$accent-orange: #f46A07;
+$accent-yellow: #ffe440;
+$button-bg: #AAAABDB3;
+
+a:hover{
+    color: $white-text;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
